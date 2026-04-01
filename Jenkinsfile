@@ -1,16 +1,12 @@
 pipeline {
     agent any
 
-    Environment {
-        Build = 'Build'
-        Test = 'Test'
-    }
-
     stages {
-        stage(Build) {
+        stage(npm install) {
             script {
-                echo "Building the application..."
-                // Add build steps here
+                echo "Installing dependencies..."
+                // Add npm install steps here
+                npm install
             }
         }
 
