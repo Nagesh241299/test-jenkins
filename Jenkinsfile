@@ -2,28 +2,26 @@ pipeline {
     agent any
 
     stages {
+
         stage('Install Dependencies') {
-            script {
+            steps {
                 echo "Installing dependencies..."
-                // Add npm install steps here
                 sh 'npm install'
             }
         }
 
-        stage('Test') {
-            script {
+        stage('Run Tests') {
+            steps {
                 echo "Running tests..."
-                // Add test steps here
-                sh 'npm test'
+                sh 'npm test -- --watchAll=false'
             }
         }
 
-        stage('Deploy') {
-            script {
-                echo "Deploying the application..."
-                // Add deployment steps here
+        stage('Build') {
+            steps {
+                echo "Building the React app..."
+                sh 'npm run build'
             }
         }
     }
-
 }
